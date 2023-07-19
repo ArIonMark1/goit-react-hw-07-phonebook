@@ -21,10 +21,9 @@ export const fetchContacts = createAsyncThunk(
 // =================================================================
 export const createContacts = createAsyncThunk(
   'contacts/createContacts',
-  async (name, phone, thunkAPI) => {
-    // повертаємо об'єкт чи значення ??
+  async ({ controlName: name, phone }, thunkAPI) => {
+    // як можна отримати більше одного аргументу іншим чином????
     try {
-      console.log(name, phone);
       const response = await axios.post('/contacts', { name, phone });
       return response.data;
     } catch (error) {
@@ -39,7 +38,6 @@ export const deleteContacts = createAsyncThunk(
     // видаляємо об'єкт контакту по ID
     try {
       const deletedContact = await axios.delete(`/contacts/${id}`);
-      console.log('Deleted contact: ', deletedContact.data);
       return deletedContact.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

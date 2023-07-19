@@ -36,7 +36,7 @@ export default function ContactForm() {
       return;
     }
     // *********************************************
-    dispatch(createContacts(controlName, phone));
+    dispatch(createContacts({ controlName, phone }));
     // *********************************************
     toast.success(`${controlName} added to contacts.`);
     formReset();

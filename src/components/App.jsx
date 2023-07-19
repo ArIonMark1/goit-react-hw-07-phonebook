@@ -58,7 +58,7 @@ export default function App() {
       {error && <p className="errorBlock">{error}</p>}
       {items.length !== 0 && (
         <>
-          {/* <SearchContacts /> */}
+          <SearchContacts />
           <ContactList />
         </>
       )}
