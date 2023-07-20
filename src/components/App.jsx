@@ -12,21 +12,12 @@ import './App.scss';
 
 export default function App() {
   const dispatch = useDispatch();
-  // const storage = useSelector(selectContacts); // моя логіка - перевіряємо чи сховище пусте ("контакти пусті" якось не звучить )
   //----------------------------------------------------------------
   const { items, isLoading, error } = useSelector(selectContactsState);
-  // console.log(items, isLoading, error);
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  /*
-  Створи сховище з configureStore()
-  Використовуй функцію createSlice()
-  Створи дії збереження та видалення контакту, а також оновлення фільтра
-  Зв'яжи React-компоненти з Redux-логікою за допомогою хуків бібліотеки react-redux.
-  Використай бібліотеку Redux Persist для збереження масиву контактів у локальному сховищі
-*/
   return (
     <div className="container">
       <h2>Phone Book</h2>

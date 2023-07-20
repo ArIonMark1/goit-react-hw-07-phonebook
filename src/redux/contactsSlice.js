@@ -63,13 +63,20 @@ const contactSlice = createSlice({
       state.error = null;
       const newList = state.items.filter(
         contact => contact.id !== action.payload.id
-      ); // при фільтрації стейт не перерендериться
-      state.items = newList; // потрібно явно переписати список контактів
+      ); // при фільтрації стейт не перерендериться(генерує новий масив, проходячи по стейту та ігноруючи співпадіння)
+      state.items = newList; // потрібно явно переписати список контактів(, важкість вичеслення On)
 
+      // ********************************************
+      // 1. проходимо по списку щоб знайти перше співпадіння(не перебирає до кінця, зупиниться при співпадінні)
+      // 2. по даних які знайшли видаляємо точково елемент
+      // --------------------------------
+      // ===== ЩО В ЦЬОМУ ВИПАДКУ КРАЩЕ ????? =====
+      // --------------------------------
       // const targetContact = state.items.findIndex(
       //   contact => contact.id === action.payload.id
       // );
       // state.items.splice(targetContact, 1);
+      // ********************************************
     },
     [deleteContacts.rejected](state, action) {
       state.isLoading = false;

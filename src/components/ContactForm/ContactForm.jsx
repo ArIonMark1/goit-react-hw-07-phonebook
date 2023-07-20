@@ -24,9 +24,6 @@ export default function ContactForm() {
     evt.preventDefault();
     const controlName = !name.trim() ? 'empty' : name.trim();
 
-    console.log('Submited form: ', controlName, phone);
-    console.log('listContacts: ', listContacts);
-
     const dublicatedContact = listContacts.find(
       contact => contact.name === controlName && contact.phone === phone
     );

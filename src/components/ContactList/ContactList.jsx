@@ -7,24 +7,21 @@ import { deleteContacts } from 'redux/operations';
 const ContactList = () => {
   // *******************************************************
   const listContacts = useSelector(selectContacts);
-  //   const filterData = useSelector(selectFilter);
+  const filterData = useSelector(selectFilter);
   const dispatch = useDispatch();
   // -------------------------------------------------------
   const removeContact = id => dispatch(deleteContacts(id));
   // *******************************************************
-  // if (!filterData) {
-  //   return;
-  // }
-  //   const newListContacts = listContacts.filter(contact =>
-  //     contact.name.toLowerCase().includes(filterData)
-  //   ); // перевірка чи є такі символи в імені контакту
 
+  const newListContacts = listContacts.filter(contact =>
+    contact.name.toLowerCase().includes(filterData)
+  ); // перевірка чи є такі символи в імені контакту
   return (
     <div>
       <div className="contactsContainer">
         <h2>Contacts</h2>
         <ul className="contactsList">
-          {listContacts.map(contact => (
+          {newListContacts.map(contact => (
             <li key={contact.id}>
               <div className="container-content">
                 Name:
