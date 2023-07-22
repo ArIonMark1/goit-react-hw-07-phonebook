@@ -21,10 +21,10 @@ export const fetchContacts = createAsyncThunk(
 // =================================================================
 export const createContacts = createAsyncThunk(
   'contacts/createContacts',
-  async ({ controlName: name, phone }, thunkAPI) => {
+  async (params, thunkAPI) => {
     // як можна отримати більше одного аргументу іншим чином????
     try {
-      const response = await axios.post('/contacts', { name, phone });
+      const response = await axios.post('/contacts', params);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
